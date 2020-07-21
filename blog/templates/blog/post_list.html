@@ -1,25 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'blog/base.html' %}
 
 {% block title %} Blog {% endblock %}
 
 {% block content %}
-    <h2>Blog List</h2>
-
-    <em>This is very important</em>
-    <br>
-    <strong>This is very important</strong>
-    <br>
-    <a href="https://djangogirls.org">link</a>
-
-    <div>
-        <h1><a href="/">Django Girls Blog</a></h1>
-    </div>
-
+{#    <h2>Blog List</h2>#}
+{##}
+{#    <em>This is very important</em>#}
+{#    <br>#}
+{#    <strong>This is very important</strong>#}
+{#    <br>#}
+{#    <a href="https://djangogirls.org">link</a>#}
     {% for post in posts %}
-        <div>
-            <p>published: {{post.published_date}}</p>
-            <h2><a href="">{{post.title}}</a></h2>
-            <p>{{post.text|linebreaksbr}}</p>
+        <div class="post">
+            <div class="date">
+                <p>published: {{ post.published_date }}</p>
+            </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
     {% endfor %}
 {% endblock %}
