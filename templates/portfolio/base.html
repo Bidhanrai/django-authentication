@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Varsha Rai Chalise</title>
+    <link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+</head>
+<body>
+    <header id="header">
+        <div id="header-left">
+            <h1>Varsha Rai Chalise</h1>
+            <p>Bat Conservationist & Science Communicator
+                National Geographic Explorer</p>
+            <p>AAAS IF/THEN Ambassador</p>
+        </div>
+        <div id="header-right">
+            <div id="social-sites-bar">
+                <a href="#" class="fa fa-facebook fa-lg"></a>
+                <a href="#" class="fa fa-twitter fa-lg"></a>
+                <a href="#" class="fa fa-linkedin fa-lg"></a>
+                <a href="#" class="fa fa-youtube fa-lg"></a>
+                <a href="#" class="fa fa-instagram fa-lg"></a>
+            </div>
+            <nav id="nav-bar">
+                <a href="{% url 'home' %}" class="nav-link">HOME</a>
+                <a href="{% url 'about' %}" class="nav-link">ABOUT ME</a>
+                <a href="#" class="nav-link">RESEARCH</a>
+                <a href="#" class="nav-link">PUBLICATIONS</a>
+                <a href="{% url 'experience' %}" class="nav-link">EXPERIENCE</a>
+                <a href="{% url 'blog_list' %}" class="nav-link">BLOG</a>
+            </nav>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer id="footer">
+        <p>ALL RIGHTS RESERVED &copy 2020 </p>
+    </footer>
+</body>
+</html>
