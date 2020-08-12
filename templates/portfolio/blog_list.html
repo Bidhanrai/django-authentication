@@ -3,24 +3,49 @@
 {% block content %}
 
     <section class="grid-section">
-        {% for post in posts %}
-           <div class="grid-section-child">
-               {% if forloop.counter is 3 %}
-                   <img src="https://www.batcon.org/wp-content/uploads/2020/04/IMG_0544-1236x1330.jpg">
-               {% else %}
-                   <img src="{% static 'image/Bat.jpg' %}">
-               {% endif %}
+        <div>
+            {% for post in posts %}
+               <div class="grid-section-child">
+                   {% if forloop.counter is 3 %}
+                       <img src="https://www.batcon.org/wp-content/uploads/2020/04/IMG_0544-1236x1330.jpg">
+                   {% else %}
+                       <img src="{% static 'image/Bat.jpg' %}">
+                   {% endif %}
 
-               <div>
-                   <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title|linebreaksbr|truncatewords:10 }}</a></h2>
+                   <div>
+                       <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title|linebreaksbr|truncatechars:200 }}</a></h2>
+{#                       <div class="divider"></div>#}
+                       <p class="date">{{ post.published_date }}</p>
+                   </div>
                    <div class="divider"></div>
-                   <p class="date">{{ post.published_date }}</p>
+
+    {#               <p>{{ post.text|linebreaksbr|truncatewords:50}}</p>#}
+    {#               <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>#}
                </div>
 
-{#               <p>{{ post.text|linebreaksbr|truncatewords:50}}</p>#}
-{#               <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>#}
-           </div>
+            {% endfor %}
+        </div>
+        <div>
+            <p style="color: #aaaaaa;letter-spacing: 1px;font-weight: 600">TOP POSTS</p>
+            {% for post in posts %}
+               <div class="grid-section-child">
+                   {% if forloop.counter is 3 %}
+                       <img src="https://www.batcon.org/wp-content/uploads/2020/04/IMG_0544-1236x1330.jpg">
+                   {% else %}
+                       <img src="{% static 'image/Bat.jpg' %}">
+                   {% endif %}
 
-        {% endfor %}
+                   <div>
+                       <h2 style="font-size: 25px"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title|linebreaksbr|truncatechars:70 }}</a></h2>
+                       <p class="date" style="font-size: 15px">{{ post.published_date }}</p>
+                   </div>
+
+    {#               <p>{{ post.text|linebreaksbr|truncatewords:50}}</p>#}
+    {#               <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>#}
+               </div>
+
+            {% endfor %}
+        </div>
+
     </section>
 {% endblock %}
