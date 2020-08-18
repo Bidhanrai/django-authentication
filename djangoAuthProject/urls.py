@@ -28,7 +28,8 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api-token-auth/', views.obtain_auth_token, name='api-token-auth')
+    path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
+    path('chat/', include('chat.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

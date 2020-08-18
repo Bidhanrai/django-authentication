@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['.pythonanywhere.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +45,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'portfolio.apps.PortfolioConfig',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+
 ]
 
 MIDDLEWARE = [
@@ -93,8 +96,20 @@ REST_FRAMEWORK = {
 
 }
 
+ASGI_APPLICATION = 'djangoAuthProject.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+        # 'ROUTING': 'djangoAuthProject.routing.channel_routing'
+    }
+}
+
 WSGI_APPLICATION = 'djangoAuthProject.wsgi.application'
 
+# ASGI_APPLICATION = 'djangoAuthProject.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -173,3 +188,4 @@ EMAIL_HOST_USER = 'demosampangrai@gmail.com'
 EMAIL_HOST_PASSWORD = 'hipsycgdebyhziot'
 DEFAULT_FROM_EMAIL = 'CodingWithSampang Team <noreply@codingwithsampang.com>'
 # EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
